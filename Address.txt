@@ -1,0 +1,26 @@
+Address:
+D:
+- Pub=
+- Add=
+- Tot_add:
+- Tot_time:
+Da:
+- Pub=
+- Add=
+- Tot_add:
+- Tot_time:
+Dan:
+- Pub=
+- Add=
+- Tot_add:
+- Tot_time:
+Dani:
+- Address: 1DaniVMN3vVfgxWWbTSGaQtxE95cSVGgSU
+- Public Key: 02b55b37b7ee5780cb1e74eb3e3c64de2e4825ba175dc17f10124e0bc52e3ffa2d
+- Total time taken: 16.97 seconds
+- Total addresses generated: 1218665
+Danie:
+- Address: 1DanieHYi7Q8ujpbYPsQKa7SbbScLirBFz
+- Public Key: 03f05247eda70c4e2bb4acf8bc86c1181166ce345ea64fd30c5471061edda0b0b3
+- Total time taken: 6603.77 seconds
+- Total addresses generated: 237050145
