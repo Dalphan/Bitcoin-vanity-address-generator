@@ -1,0 +1,4 @@
+coincurve
+pycryptodome
+base58
+fastecdsa
