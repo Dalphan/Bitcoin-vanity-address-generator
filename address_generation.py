@@ -70,7 +70,8 @@ def main():
     num_generated = 0
     start_time = time.time()
     pattern = '1Dan'
-
+    total_time = start_time
+    total_addresses = 0
     with ProcessPoolExecutor(max_workers=NUM_THREADS) as executor:
         futures = []
         while True:
@@ -80,8 +81,13 @@ def main():
                     pub_key, bitcoin_address = future.result()
                     num_generated += 1
                     if pattern in bitcoin_address[:pattern.__len__()]:
-                        print(f"Address:\t {bitcoin_address}")
-                        print(f"Public Key:\t {pub_key}")
+                        print(f"- Address: {bitcoin_address}")
+                        print(f"- Public Key: {pub_key}")
+
+                        total_time = time.time() - total_time
+                        print(f"- Total time taken: {total_time:.2f} seconds")
+                        total_addresses += num_generated
+                        print(f"- Total addresses generated: {total_addresses}")
                         executor.shutdown(wait=False)
                         return
                 futures = []
@@ -90,6 +96,7 @@ def main():
             if elapsed_time >= 1:
                 print(f"Addresses generated per second: {num_generated / elapsed_time:.2f}")
                 start_time = time.time()
+                total_addresses += num_generated
                 num_generated = 0
     
 if __name__ == "__main__":

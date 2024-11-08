@@ -1,10 +1,11 @@
-import address_gen  # Import the compiled Cython module
+import address_gen  # type: ignore # Import the compiled Cython module
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
 import os
 
 NUM_THREADS = os.cpu_count() or 10
-PATTERN = 'Danie'
+print(f"Number of threads: {NUM_THREADS}")
+PATTERN = 'Daniel'
 
 def main():
     num_generated = 0
@@ -23,13 +24,13 @@ def main():
                 for pub_key, bitcoin_address in batch_addresses:
                     num_generated += 1
                     if bitcoin_address[1:1 + len(PATTERN)] == PATTERN:
-                        print(f"Address: {bitcoin_address}")
-                        print(f"Public Key: {pub_key}")
+                        print(f"- Address: {bitcoin_address}")
+                        print(f"- Public Key: {pub_key}")
                         
                         total_time = time.time() - total_time
-                        print(f"Total time taken: {total_time:.2f} seconds")
+                        print(f"- Total time taken: {total_time:.2f} seconds")
                         total_addresses += num_generated
-                        print(f"Total addresses generated: {total_addresses}")
+                        print(f"- Total addresses generated: {total_addresses}")
                         executor.shutdown(wait=False)
                         return
 

@@ -43,7 +43,8 @@ def generate_addresses(batch_size=1000):
 def main():
     num_generated = 0
     start_time = time.time()
-
+    total_time = start_time
+    total_addresses = 0
     with ProcessPoolExecutor(max_workers=NUM_THREADS) as executor:
         # Submit initial batch tasks
         future_to_batch = {executor.submit(generate_addresses, 1000): i for i in range(NUM_THREADS)}
@@ -60,8 +61,13 @@ def main():
                     # Check for the pattern "Dan" after the first '1'
                     if '1' in bitcoin_address:
                         if bitcoin_address[1:1 + len(PATTERN)] == PATTERN:
-                            print(f"Found address with pattern '{PATTERN}': {bitcoin_address}")
-                            print(f"Compressed Public Key: {pub_key}")
+                            print(f"- Address '{PATTERN}': {bitcoin_address}")
+                            print(f"- Public Key: {pub_key}")
+
+                            total_time = time.time() - total_time
+                            print(f"- Total time taken: {total_time:.2f} seconds")
+                            total_addresses += num_generated
+                            print(f"- Total addresses generated: {total_addresses}")
                             executor.shutdown(wait=False)
                             return
 
@@ -70,6 +76,7 @@ def main():
                 if elapsed_time >= 1:
                     print(f"Addresses generated per second: {num_generated / elapsed_time:.2f}")
                     start_time = time.time()
+                    total_addresses += num_generated
                     num_generated = 0
 
                 # Submit a new batch task

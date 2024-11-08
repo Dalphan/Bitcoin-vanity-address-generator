@@ -1,19 +1,19 @@
 Address:
 D:
-- Pub=
-- Add=
-- Tot_add:
-- Tot_time:
+- Address: 1DKtoJxoEr3vAQi8xv34pC9rhcP7QN8UBX
+- Public Key: 022e3b3fb2b5c82d886f1695f81575fc0fe69126153d479a001af2a7a2ff518063
+- Total time taken: 0.17 seconds
+- Total addresses generated: 12
 Da:
-- Pub=
-- Add=
-- Tot_add:
-- Tot_time:
+- Address: 1DaesB3BnXKFG1TB6CGNN6uAjXsYSvmiVZ
+- Public Key: 0390403a891215524d1c68ce2df63819a86e4a9676aa44392070cd75e0d503d38a
+- Total time taken: 0.16 seconds
+- Total addresses generated: 962
 Dan:
-- Pub=
-- Add=
-- Tot_add:
-- Tot_time:
+- Address: 1DanSSNEJJ9LBNBkaYcx16AcspP3fFmkuU
+- Public Key: 03975d76bc42b0005bad368345940bcee323b4fee72a21b859987cd883443d3907
+- Total time taken: 1.29 seconds
+- Total addresses generated: 90306
 Dani:
 - Address: 1DaniVMN3vVfgxWWbTSGaQtxE95cSVGgSU
 - Public Key: 02b55b37b7ee5780cb1e74eb3e3c64de2e4825ba175dc17f10124e0bc52e3ffa2d
@@ -22,5 +22,10 @@ Dani:
 Danie:
 - Address: 1DanieHYi7Q8ujpbYPsQKa7SbbScLirBFz
 - Public Key: 03f05247eda70c4e2bb4acf8bc86c1181166ce345ea64fd30c5471061edda0b0b3
-- Total time taken: 6603.77 seconds
+- Total time taken: 110 minutes
 - Total addresses generated: 237050145
+Daniel:
+- Address: 
+- Public Key: 
+- Total time taken: estimated time with 72000 address/second => 146 hours
+- Total addresses generated: 1 in 38068692544
