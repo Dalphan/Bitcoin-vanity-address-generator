@@ -4,11 +4,6 @@ import base58
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import coincurve
-import os
-
-NUM_THREADS = os.cpu_count() or 8  # Utilize all available CPU cores
-
-PATTERN = 'Dani'
 
 def generate_addresses(batch_size=1000):
     """
@@ -40,14 +35,14 @@ def generate_addresses(batch_size=1000):
         addresses.append((compressed_pubkey, bitcoin_address))
     return addresses
 
-def main():
+def main(pattern, num_threads):
     num_generated = 0
     start_time = time.time()
     total_time = start_time
     total_addresses = 0
-    with ProcessPoolExecutor(max_workers=NUM_THREADS) as executor:
+    with ProcessPoolExecutor(max_workers=num_threads) as executor:
         # Submit initial batch tasks
-        future_to_batch = {executor.submit(generate_addresses, 1000): i for i in range(NUM_THREADS)}
+        future_to_batch = {executor.submit(generate_addresses, 1000): i for i in range(num_threads)}
 
         while future_to_batch:
             # As each batch completes
@@ -60,8 +55,8 @@ def main():
                     num_generated += 1
                     # Check for the pattern "Dan" after the first '1'
                     if '1' in bitcoin_address:
-                        if bitcoin_address[1:1 + len(PATTERN)] == PATTERN:
-                            print(f"- Address '{PATTERN}': {bitcoin_address}")
+                        if bitcoin_address[1:1 + len(pattern)] == pattern:
+                            print(f"- Address '{pattern}': {bitcoin_address}")
                             print(f"- Public Key: {pub_key}")
 
                             total_time = time.time() - total_time
@@ -82,5 +77,5 @@ def main():
                 # Submit a new batch task
                 future_to_batch[executor.submit(generate_addresses, 1000)] = batch_index
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

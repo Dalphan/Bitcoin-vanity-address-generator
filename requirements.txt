@@ -1,6 +1,5 @@
 coincurve
 pycryptodome
 base58
-fastecdsa
 cython
 setuptools
